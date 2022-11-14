@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar class="tool">
+
+    <ion-menu-button main="menu" slot="start"></ion-menu-button>
+
+    <ion-title>dashbord</ion-title>
+    <ion-thumbnail slot="end">
+      <ion-icon class="bell" name="notifications-outline"></ion-icon>
+      <ion-badge color="danger">6</ion-badge>
+
+    </ion-thumbnail>
+
+
+
+
+  </ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-header>
+
+
+
+
+
+
+
+<ion-content>
+  
+  <div class="row">
+    <div routerLink="/data" class="column">
+      <img  class="thum" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQL_mClh0t6Qu9TDGX84ohngQYzh2gkXBqQ&usqp=CAU" alt="Snow" >
+     <ion-label class="name">Womens</ion-label> </div>
+    <div routerLink="/data" class="column">
+      <img class="thum" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQImKCfGDYwoWM_bAmzJfaL5lxDeOG8quf51g&usqp=CAU" alt="Forest" >
+      <ion-label class="name">Mens</ion-label></div>
+    <div routerLink="/data" class="column">
+      <img class="thum" src="https://previews.123rf.com/images/jackf/jackf1511/jackf151102619/48544961-beautiful-young-hairdresser-working-in-a-salon-is-making-a-haircut-for-a-handsome-man.jpg" alt="Mountains" >
+      <ion-label class="name" >Unisex</ion-label> </div>
+  </div>
+
+
+
+  <ion-slides #slider loop="true" pager="true" [options]="slideOptions" (ionSlideTouchEnd)="slideChanged()">
+    <ion-slide *ngFor="let user of UserData">
+      <ion-card>
+        <img class="image-container" src="{{user.image}}">
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="store">
+    <h3>Catogery</h3>
+
+  </div>
+  <ion-slides routerLink="/data" #slider loop="true" pager="true" [options]="slideOptions" (ionSlideTouchEnd)="slideChanged()">
+     
+    <ion-slide *ngFor="let user of imgData">
+
+          <ion-card >
+            <ion-label class="lab">{{user.label}}</ion-label>
+            <img class="img" src="{{user.img}}">
+         
+          </ion-card>
+          </ion-slide>
+          </ion-slides>
+  
+
+
+  <div class="store">
+    <h3>BRAND FOR YOU</h3>
+
+  </div>
+
+  <ion-slides routerLink="/data" #slider loop="true" pager="true" [options]="slideOptions" (ionSlideTouchEnd)="slideChanged()">
+     
+    <ion-slide *ngFor="let user of itemData">
+
+          <ion-card >
+            <img class="img" src="{{user.store}}">
+          
+          </ion-card>
+          </ion-slide>
+          </ion-slides>
+       
+ 
+ 
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  <ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button routerLink="/dashbord">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+
+
+    <ion-tab-button routerLink="/wishlist">
+      <ion-icon name="heart-outline"></ion-icon>
+      <ion-label>Wishlist</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/qr">
+      <ion-icon name="qr-code-outline"></ion-icon>
+      <ion-label>QR</ion-label>
+    </ion-tab-button>
+
+
+
+    <ion-tab-button routerLink="/account">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/booked">
+      <ion-icon name="bag-outline"></ion-icon>
+      <ion-label>Bag</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+</ion-toolbar>
+</ion-footer>
