@@ -11,88 +11,49 @@
 
   <ion-card>
     <ion-card-title> Sing Up</ion-card-title>
-    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <form >
    
-    <ion-item lines="full">
-      <ion-label position="floating">UserName</ion-label>
-      <ion-input type="text" formControlName="UserName" required></ion-input>
-    </ion-item>
-
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.UserName.errors?.required">
-      Name is required.
-    </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.UserName.errors?.minlength">
-      Name should be min 2 chars long.
-    </span>
+      <ion-item lines="full">
+        <ion-label position="floating"> User Name</ion-label>
+        <ion-input type="text" name="username" [(ngModel)]="data. username" required></ion-input>
+      </ion-item>
     <br>
     <ion-item lines="full">
-      <ion-label position="floating"> DOB </ion-label>
-      <ion-input type="date" formControlName="DOB" required></ion-input>
-    </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.DOB.errors?.required">
-      DOB is required.
-    </span>
+      <ion-label position="floating">DOB</ion-label>
+      <ion-input type="date" name="dob" [(ngModel)]="data.dob" required></ion-input> </ion-item
+    >
     <br>
     <ion-item lines="full">
-      <ion-label position="floating">Contact Number</ion-label>
-      <ion-input type="text" formControlName="ContactNumber" required></ion-input>
-    </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.ContactNumber.errors?.required">
-      Mobile number is required.
-    </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.ContactNumber.errors?.pattern">
-      Only numerical values allowed.
-    </span> 
+      <ion-label position="floating"> Contact Number </ion-label>
+      <ion-input type="text" name="mobileNo" [(ngModel)]="data.mobileNo" required></ion-input>
+    </ion-item> 
     <br>
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" formControlName="email" required></ion-input>
+      <ion-input type="text" name="emailId" [(ngModel)]="data.emailId" required></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
-      Email is required.
-    </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
-      Please provide valid email id.
-    </span> 
     <br>
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" formControlName="Password" required></ion-input>
+      <ion-input type="password" name="password" [(ngModel)]="data.password" required></ion-input>
     </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.Password.errors?.required">
-      Password is required.
-    </span>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.Password.errors?.minlength">
-      Name should be min 6 chars long.
-    </span>
     <br>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Confirm Password</ion-label>
-      <ion-input type="password" formControlName="ConfirmPassword" required></ion-input>
-    </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.ConfirmPassword.errors?.required">
-      ConfirmPassword is required.
-    </span>
-    <br>
+
 
 
     <ion-item>
       <ion-label>Gender</ion-label>
-      <ion-select class="custom-options" interface="popover" formControlName="Gender">
-        <ion-select-option value="brown" class="brown-option">male</ion-select-option>
-        <ion-select-option value="blonde">Female</ion-select-option>
-        <ion-select-option value="black">unisex</ion-select-option>
-        
+      <ion-select class="custom-options" interface="popover" name="gender" [(ngModel)]="data.gender">
+        <ion-select-option value="Male" class="brown-option">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+        <ion-select-option value="Unisex">Unisex</ion-select-option>
       </ion-select>
     </ion-item>
-    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.Gender.errors?.required">
-      Gender is required.
-    </span>
     <br>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="dark" routerLink="/dashbord" [disabled]="!ionicForm.valid" expand="block">signup</ion-button>
+        <ion-button type="submit" color="dark"  (click)="doSubmitForm()" expand="block">signup</ion-button>
       </ion-col>
     </ion-row>
 <div class="link">

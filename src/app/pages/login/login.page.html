@@ -1,4 +1,4 @@
-
+<!-- 
 
 
 
@@ -18,4 +18,37 @@
     Don't have an account ? <a class="Singin" routerLink="/home" color="dark">Sing In</a></div>
 
   </div></div>
+</ion-content> -->
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title> LogIn</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <form> -->
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" required [(ngModel)]="loginForm.email"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required [(ngModel)]="loginForm.password"></ion-input>
+    </ion-item><br><br>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="dark"  expand="block"  (click)="login()">Login</ion-button>
+        <a   class="small-text" >Forgot Password?</a>
+      </ion-col>
+     
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block"  routerLink="/home" >Signup</ion-button>
+       
+      </ion-col>
+    </ion-row>
+  <!-- </form> -->
 </ion-content>

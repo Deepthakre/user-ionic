@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import {  MenuController } from '@ionic/angular';
-
-
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,69 +10,47 @@ import {  MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
- 
- UserData:any=[];
- ionicForm: FormGroup;
- isSubmitted = false;
+  constructor(private authService:AuthService, private router:Router,private toastController: ToastController) { }
 
-  constructor(private alertController: AlertController, private http:HttpClient, public formBuilder: FormBuilder,public menuCtrl: MenuController) { }
+  loginForm = {
+    email:'',
+    password:''
+  };
+
   ngOnInit() {
-    this.ionicForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      Password:['',[Validators.required,Validators.minLength(6)]],
-      
-    })
   }
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Forgot Password',
-      buttons: ['Submit'],
-      inputs: [
-        {
-          placeholder: 'Enter Email Id',
-        },
-        
-        {
-          type: 'number',
-          placeholder: 'Enter Mobile No',
-         
-        },
-       
-      ],
-    });
-
-    await alert.present();
-  }
-
-
-  httpRun(){
-    console.log("hello Data")
-    this.http.get('http://demo0884554.mockable.io/hello').subscribe(Data=>{
-      console.log(Data)
-      this.UserData=Data;
-     
+ 
+  login(){
+    this.authService.useLogin(this.loginForm)
+    .subscribe(value => {
+      if(value){
+        //alert('login success');
+        console.log('login success');
+        this.router.navigateByUrl('/dashbord')
+      }
+      else{
+        alert('login fails')
+        this.presentToast("Please Enter Valid Credentials");
+      }
+    },error => {
+      //alert('login fails')
+      this.presentToast("Please Enter Valid Credentials");
     })
-    
-      }
+ }
 
 
-      get errorControl() {
-        return this.ionicForm.controls;
-      }
-      submitForm() {
-        this.isSubmitted = true;
-        if (!this.ionicForm.valid) {
-          console.log('Please provide all the required values!')
-          return false;
-        } else {
-          console.log(this.ionicForm.value)
-        }
-      }
+ async presentToast(msg) {
+  
+  const toast = await this.toastController.create({
+    message: msg,
+    duration: 2000,
+   
+  });
 
-      ionViewWillEnter() {
-        this.menuCtrl.enable(false);
-       }
-       
+  await toast.present();
+}
+
 }
 
 
+//routerLink="/home"
