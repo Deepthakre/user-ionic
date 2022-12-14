@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CartService } from 'src/app/cart.service';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { HttpClient } from '@angular/common/http';
 export class QRPage implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   UserData: any=[];
+  public totalItem : number = 0;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private cartService : CartService) { }
 
   ngOnInit() {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -21,7 +23,14 @@ export class QRPage implements OnInit {
 
 
       });
+      {
+        this.cartService.getProducts()
+        .subscribe(res=>{
+          this.totalItem = res.length;
+        })
+      }
   }
+  
 
   }
 

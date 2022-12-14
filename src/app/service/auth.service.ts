@@ -16,7 +16,7 @@ export class AuthService {
 
   //Prod URL
   url="http://fransalonapp-env-1.eba-mv3mavpj.ap-northeast-1.elasticbeanstalk.com";
-
+// url="http://fransalonapp-env-1.eba-mv3mavpj.ap-northeast-1.elasticbeanstalk.com"
   userInfo = new BehaviorSubject(null);
   jwtHelper = new JwtHelperService();
   checkUserObs:Observable<any>;
@@ -71,7 +71,7 @@ export class AuthService {
       username:login.email,
       password:login.password
       };
-      return this.http.post(`${this.url}/authenticate`,payload).pipe(
+     return this.http.post(`${this.url}/authenticate`,payload).pipe(
       map((response:any)=>{
         console.log(response);
         this.storage.set('access_token',response.token);
@@ -87,7 +87,8 @@ export class AuthService {
     return of(false);
     }
 
-    getTodos():Observable<any>{
-      return this.http.get(`${this.url}/hello`);
-  }
+  //   getTodos():Observable<any>{
+  //     return this.http.get(`${this.url}/hello`);
+  // }
+ 
 }

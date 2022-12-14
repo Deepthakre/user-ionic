@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataService } from '../user-data.service';
+import { USERService } from '../service/user.service';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -9,26 +9,26 @@ import { ToastController } from '@ionic/angular';
 }) 
 export class HomePage implements OnInit {
   
+
   public errorMessage: string;
 
   data={
     
-   
-  
-    username:'',
+    emailId:'', 
+    name:'',
     dob:'',
     gender:'',
-    emailId:'',
+   
     password:'',
     mobileNo:'',
-  
+   
    }
 
-  constructor(private UserDataService:UserDataService,private toastController: ToastController) { }
+  constructor( private USERService:USERService,private toastController: ToastController) { }
 
   ngOnInit() {
   }
-
+ 
   doSubmitForm(){
     console.log("Try to submit form");
     console.log("DATA ",this.data);
@@ -38,20 +38,18 @@ export class HomePage implements OnInit {
       this.presentToast("Fields can not be empty");
      
     }else{
-    // this.UserDataService.userRegistration(this.data).subscribe(
-    //   response=>{
-    //     console.log(response);
-    //     this.presentToast("User Successfully Registered");
-    // },
-    //   error=>{
+    this.USERService.userRegistration(this.data).subscribe(
+      response=>{
+        console.log(response);
+        this.presentToast("User Successfully Registered");
+    },
+      error=>{
         
-    //     console.log("Error from server : " + error);
-    //     this.presentToast(error);
-    // } 
-    // )
-
-    console.log(this.data)
-  }
+        console.log("Error from server : " + error);
+        this.presentToast(error);
+    } 
+      )
+  } 
   }
 
   async presentToast(msg) {
@@ -64,6 +62,11 @@ export class HomePage implements OnInit {
 
   
 }
+
+
+  
+  
+
 
 
 

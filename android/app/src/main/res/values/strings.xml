@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">singUp</string>
-    <string name="title_activity_main">singUp</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">UserApp</string>
+    <string name="title_activity_main">UserApp</string>
+    <string name="package_name">io.ionic.SHIVANI</string>
+    <string name="custom_url_scheme">io.ionic.SHIVANI</string>
 </resources>

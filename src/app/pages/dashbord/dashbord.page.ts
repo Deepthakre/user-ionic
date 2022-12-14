@@ -3,7 +3,7 @@ import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import {  MenuController } from '@ionic/angular';
-
+import { CartService } from 'src/app/cart.service';
 
 
 
@@ -20,19 +20,25 @@ item: any=[];
   itemData:any=[];
   imgData:any=[];
   slider: any;
+  imageData:any;
     slideOptions = {
     initialSlide: 0,
     slidesPerView: 1,
     autoplay: true
   };
-  
-  constructor(private http: HttpClient, public toastController: ToastController, public menuCtrl: MenuController) { }
+loading:boolean=false;
+  slideOpts = {
+    slidesPerView: 2.2,
+  };
+  public totalItem : number = 0;
+
+  constructor(private http: HttpClient, public toastController: ToastController, public menuCtrl: MenuController,private cartService : CartService) { }
 
   ngOnInit() {
     this.http.get('http://demo0884554.mockable.io/hello',).subscribe(Data=>{
     console.log(Data);
     this.UserData=Data;
-
+   
 
     });
 
@@ -49,7 +55,19 @@ item: any=[];
 
 
     });
+    this.http.get('  http://demo0884554.mockable.io/images',).subscribe(img=>{
+      console.log(img);
+      this.imageData=img;
+  
+  
+      });
 
+      {
+        this.cartService.getProducts()
+        .subscribe(res=>{
+          this.totalItem = res.length;
+        })
+      }
   }
 
   table(){
@@ -95,5 +113,6 @@ item: any=[];
    {
       this.slider.stopAutoplay(); //this code for slide after page change
       }
-
+      
+      
 }

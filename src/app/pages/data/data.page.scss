@@ -15,4 +15,13 @@ h3{
 }
 ion-card{
     text-align: center;
+   
+}
+ion-grid{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    --ion-grid-columns: 2;
 }

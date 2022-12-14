@@ -1,29 +1,34 @@
 
-
 <ion-header>
   <ion-toolbar>
-    <ion-title>Data Print</ion-title>
+    <ion-title>DATA</ion-title>
   </ion-toolbar>
+ 
 </ion-header>
 
 <ion-content>
-
-  <ion-card *ngFor="let user of UserData">
-    <img src="{{user.image}}">
+<ion-grid>
+  <ion-row >
+    <ion-col >
+  <ion-card *ngFor="let item of UserData">
+    <img src="{{item.image}}">
     <ion-card-content>
-      <ion-card-title>{{user.service}}</ion-card-title>
-      <ion-card-subtitle>{{user.rate}}</ion-card-subtitle>
+      <ion-card-title>{{item.service}}</ion-card-title>
+      <ion-card-subtitle>{{item.rate}}</ion-card-subtitle>
       <ion-card-title>
-        <ion-badge class="dis" color="warning">{{user.discount}} </ion-badge>
+        <ion-badge class="dis" color="warning">{{item.discount}} </ion-badge>
       </ion-card-title>
-      <ion-card-title class="offer">{{user.offer}}</ion-card-title>
-      <ion-button fill="outline">ADD Service</ion-button>
+      <ion-card-title class="offer">{{item.offer}}</ion-card-title>
+      <ion-button fill="outline" (click)="addtocart(item)">ADD Service</ion-button>
     </ion-card-content>
-  </ion-card>
+  </ion-card> 
+</ion-col>
+</ion-row>
+</ion-grid>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-  <ion-tabs>
+  <ion-tabs> 
   <ion-tab-bar slot="bottom">
     <ion-tab-button routerLink="/dashbord">
       <ion-icon name="home-outline"></ion-icon>
@@ -39,7 +44,7 @@
     </ion-tab-button>
 
     <ion-tab-button routerLink="/qr">
-      <ion-icon name="qr-code-outline"></ion-icon>
+      <ion-icon name="qr-code-outline"></ion-icon> 
       <ion-label>QR</ion-label>
     </ion-tab-button>
 
@@ -53,8 +58,9 @@
     <ion-tab-button routerLink="/booked">
       <ion-icon name="bag-outline"></ion-icon>
       <ion-label>Bag</ion-label>
+      <ion-badge>{{totalItem}}</ion-badge>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
-</ion-toolbar>
+</ion-toolbar> 
 </ion-footer>

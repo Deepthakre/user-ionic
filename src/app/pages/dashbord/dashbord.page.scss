@@ -1,26 +1,8 @@
-.slider-frame{
-   overflow:hidden;
-    background-color: aqua;
-    width: 1200px;
-    height: 200px;
-   
+
+ion-header{
+margin-top: 30px;
+
 }
-
-
- ion-card{
-    height: 250px;
-    width: 350px;
-    margin-left: 0%;
-    margin-right: 0%;
-    }
-
-.image-container{
-    height: 250px;
-    width: 350px;
-}
-
-
-
 .head
 {
     font-size: 18px;
@@ -29,10 +11,32 @@
 }
 h3{
     text-align: center;
+
 }
 ion-card{
     text-align: center;
+    height: 80%;
+    width: 100%;
+  
 }
+img{
+  height: 80%;
+
+  width: 100%;
+}
+
+.icon{
+  height: 50%;
+    width: 50%;
+    border-radius: 50px;
+    text-align: center;
+}
+.iconss{
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+}
+
 
 
     .dis{
@@ -45,22 +49,18 @@ text-align: center;
   .bell{
     font-size: 30px;
   } 
-  .store{
-    width: 100%;
-    height: 10%;
-    background-color: #062331;
-    text-align: center;
+  .line{
+   
+
     font-family: sans-serif;
     font-weight: 300;
     font-style: italic;
-    color:white;
-    padding-top: 2%;
-    margin-top: 0%;
+
     font-size: 80px;
   }  
   .img{
-    height: 250px;
-    width: 350px;
+    height: 350px;
+    width:500px;
   }
 
 
@@ -91,28 +91,69 @@ margin-right: 5%;
 
   }
   
-  /* Clearfix (clear floats) */
-  .row::after {
-    content: "";
-    clear: both;
-    display: table;
-   width: 100%;
-   height: 35px;
-   text-align: center;
-   align-items: center;
+.imgcard{
+width: 100%;
+height: 200px;
+}
+.imgsize{
+  width: 100%;
+height: 50%;
+}
 
-  }
-  .thum{
-    width: 80px;
-    height: 80px;
-    align-items: center;
-    text-align: center;
+.h3{
+  padding-top: 30%;
+}
+.bgCard {
+  // background-position: fixed;
+  // background-repeat: no-repeat;
+  // background-size: contain;
+  width:250PX;
+  height: 200PX;
+  background-color: rgb(223, 223, 253);
+  border-radius: 20px;
+}
+.cardimages{
+  width:250PX;
+  height:110PX;
+}
+.bgCard1 {
+  // background-position: fixed;
+  // background-repeat: no-repeat;
+  // background-size: contain;
+  width:250PX;
+  height: 200PX;
+  background-color: rgb(238, 218, 223);
+  border-radius: 20px;
 
-    border-radius: 50px;
-  }
-  .name{
-    text-align: center;
-    margin-left: 2%;
-  padding: 2%;
-  }
-    
+}
+.bgCard2 {
+  // background-position: fixed;
+  // background-repeat: no-repeat; 
+  // background-size: contain;
+  width:250PX;
+  height: 200PX;
+  background-color: rgb(224, 252, 231);
+  border-radius: 20px;
+ 
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--ion-color-dark);
+ 
+}
+.btnimg{
+// height: 70px;
+// font-size: 15px;
+// margin-bottom: -20px;
+border-radius: 40px;
+width: 60px;
+height: 60px ;
+// img{
+// width: 70px;
+// height: 70px ;
+
+
+//  }
+}

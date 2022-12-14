@@ -1,24 +1,115 @@
-<ion-header>
-  <ion-toolbar>    
+<!-- <ion-header>
+  <ion-toolbar>
     <ion-menu-button slot="start"></ion-menu-button>
 
 
     <ion-title> My Account</ion-title>
+
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div class="container">
-  <ion-grid>
-  <ion-row><ion-col>
-    <ion-thumbnail><ion-label class="sb">SB</ion-label></ion-thumbnail></ion-col>
-  <ion-col><h3>Shivani</h3>
-  <p>shivani@gmail.com</p>
-  <p>1234567890
-  </p> </ion-col></ion-row></ion-grid>
-</div>
+ 
+
+  <div class="container">
+    <div class="outer" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+      <div class="inner" (click)="openOptionSelection()">
+        <ion-icon name="camera" id="open-modal" class="camera-icon"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2>Shivani Borkar</h2>
+    <h3>shivani@gmail.com</h3>
+    <p>123456789</p>
+  </div>
+  <div *ngFor="let item of items">
+    <ion-item>
+      <h3 >{{item.name}}</h3><ion-icon  id="open-modal" name="pencil-sharp" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.email}}</h3>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.dob}}</h3><ion-icon  name="pencil-sharp" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.gender}}</h3><ion-icon name="pencil-sharp" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.mobile}}</h3><ion-icon  name="pencil-sharp" slot="end"></ion-icon>
+    </ion-item>
+    <ion-text color="danger"><p class="ion-margin-horizontal"  id="open-modal">Forgot Password?</p></ion-text>
+  </div>
+
+
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Enter your name</ion-label>
+          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
+<!-- <ion-modal #modal trigger="open-modal">
+  <ng-container ><ion-content >
+  
+  <ion-button (click)="cancel()"></ion-button>
+    <h3 class="title">Profile photo</h3>
+    <ion-grid class="container">
+      <ion-row>
+        <ion-col size="3" class="ion-text-center">
+          <div class="removePhoto">
+            <ion-icon name="trash" class="icon"></ion-icon>
+          </div>
+          <p>
+            Remove <br> photo
+          </p>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center"
+  (click)="startCapture('Photos')">
+         <div class="galleryPhoto">
+            <ion-icon name="images" class="icon"></ion-icon>
+         </div>
+         <p>
+           Gallery
+         </p>
+       </ion-col>
+       <ion-col size="3" class="ion-text-center"   (click)="startCapture('Camera')">
+         <div class="cameraPhoto">
+           <ion-icon name="camera" class="icon"></ion-icon>
+         </div>
+         <p>
+           Camera
+         </p>
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content></ng-container></ion-modal> -->
+
+
+
+<!-- 
+
 <ion-tabs>
+  <ion-button color="dark" (click)="logout()">logout</ion-button>
+
   <ion-tab-bar slot="bottom">
     <ion-tab-button routerLink="/dashbord">
       <ion-icon name="home-outline"></ion-icon>
@@ -38,7 +129,7 @@
       <ion-label>QR</ion-label>
     </ion-tab-button>
 
-
+ 
 
     <ion-tab-button routerLink="/account">
       <ion-icon name="person-outline"></ion-icon>
@@ -48,6 +139,79 @@
     <ion-tab-button routerLink="/booked">
       <ion-icon name="bag-outline"></ion-icon>
       <ion-label>Bag</ion-label>
+      <ion-badge>{{totalItem}}</ion-badge>
+
     </ion-tab-button>
   </ion-tab-bar>
-</ion-tabs>
+</ion-tabs> --> -->
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+
+
+    <ion-title> My Account</ion-title>
+
+
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <div class="container">
+    <div class="outer" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+      <div class="inner" (click)="openOptionSelection()">
+        <ion-icon name="camera" class="camera-icon"></ion-icon>
+      </div>
+    </div>
+  </div>
+   
+  <div *ngFor="let item of items">
+    <ion-item>
+      <h3 >{{item.name}}</h3>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.email}}</h3>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.dob}}</h3>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.gender}}</h3>
+    </ion-item>
+    <ion-item>
+      <h3>{{item.mobile}}</h3>
+    </ion-item>
+  </div> 
+
+
+  <ion-button id="open-modal" expand="block">Open</ion-button>
+  <p>{{ message }}</p>
+  <ion-modal trigger="open-modal" [isOpen]="isModalOpen" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Welcome</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <form (ngSubmit)="update()">
+        <div *ngFor="let item of items">
+          
+          <ion-input type="text" name="name" placeholder="{{item.name}}" [(ngModel)]="name"></ion-input><br>
+          <ion-input type="text" name="email" placeholder="{{item.email}}" [(ngModel)]="email"></ion-input><br>
+          <ion-input type="text" name="dob" placeholder="{{item.dob}}" [(ngModel)]="dob"></ion-input><br>
+          <ion-input type="text" name="gender" placeholder="{{item.gender}}" [(ngModel)]="gender"></ion-input><br>
+          <ion-input type="text" name="mobile" placeholder="{{item.mobile}}" [(ngModel)]="mobile"></ion-input><br>
+
+        </div></form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
